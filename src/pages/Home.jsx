@@ -19,8 +19,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <section className="bg-cyan-50 px-4 py-20 text-center">
+    <div className="w-12/14 mx-auto ">
+      <section className=" bg-cyan-50 px-4 py-20 text-center ">
         <h1 className="text-4xl font-bold text-ink sm:text-5xl">
           Find Your Perfect Study Room
         </h1>

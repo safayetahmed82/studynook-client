@@ -5,15 +5,19 @@ import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import NotFound from "./pages/NotFound";
 import RoomDetails from "./pages/RoomDetails";
+import { Toaster } from "react-hot-toast";
+import Register from "./pages/Register";
 
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
+      <Toaster />
       <Navbar />
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/rooms" element={<Rooms />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/rooms/:id" element={<RoomDetails />} />
         </Routes>

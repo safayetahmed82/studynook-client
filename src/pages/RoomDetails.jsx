@@ -27,7 +27,7 @@ const RoomDetails = () => {
   }
 
   return (
-    <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2">
+    <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 ">
       <img
         src={room.image}
         alt={room.name}
