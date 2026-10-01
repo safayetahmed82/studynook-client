@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const RoomCard = ({ room }) => {
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+    <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-xl">
       <img
         src={room.image}
         alt={room.name}
-        className="h-48 w-full object-cover"
+        className="h-48 w-full object-cover transition duration-300 group-hover:scale-105"
       />
 
       <div className="flex flex-1 flex-col p-4">
