@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import RoomDetails from "./pages/RoomDetails";
 import { Toaster } from "react-hot-toast";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/rooms/:id" element={<RoomDetails />} />
         </Routes>
