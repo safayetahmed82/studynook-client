@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import NotFound from "./pages/NotFound";
+import RoomDetails from "./pages/RoomDetails";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/rooms" element={<Rooms />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/rooms/:id" element={<RoomDetails />} />
         </Routes>
       </main>
       <Footer />
