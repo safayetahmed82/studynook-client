@@ -2,11 +2,13 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import useTitle from "../hooks/useTitle";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   useTitle("StudyNook – Login");
 
   const navigate = useNavigate();
+  const { setUser } = useAuth();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
@@ -17,16 +19,21 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ email, password }),
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ email, password }),
+        },
+      );
       const data = await res.json();
 
       if (res.ok) {
         toast.success("Login successful!");
+        toast.success("Login successful!");
+        setUser(data.user);
         navigate(from, { replace: true });
       } else {
         toast.error(data.message);
@@ -39,7 +46,9 @@ const Login = () => {
   return (
     <div className="mx-auto max-w-md px-4 py-12">
       <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-        <h1 className="text-center text-3xl font-bold text-ink">Welcome back</h1>
+        <h1 className="text-center text-3xl font-bold text-ink">
+          Welcome back
+        </h1>
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>
