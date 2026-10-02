@@ -9,6 +9,8 @@ import RoomDetails from "./pages/RoomDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import AddRoom from "./pages/AddRoom";
+import MyListings from "./pages/MyListings";
 
 export default function App() {
   return (
@@ -27,7 +29,7 @@ export default function App() {
             path="/add-room"
             element={
               <PrivateRoute>
-                <p className="p-8">Add Room page coming soon</p>
+                <AddRoom />
               </PrivateRoute>
             }
           />
@@ -35,7 +37,7 @@ export default function App() {
             path="/my-listings"
             element={
               <PrivateRoute>
-                <p className="p-8">My Listings page coming soon</p>
+                <MyListings />
               </PrivateRoute>
             }
           />
