@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import ConfirmModal from "../components/ConfirmModal";
 import EditRoomModal from "../components/EditRoomModal";
 import BookingModal from "../components/BookingModal";
+import Spinner from "../components/Spinner";
 
 const RoomDetails = () => {
   useTitle("StudyNook – Room Details");
@@ -54,7 +55,7 @@ const RoomDetails = () => {
   };
 
   if (loading) {
-    return <p className="py-24 text-center text-gray-600">Loading room...</p>;
+    return <Spinner />;
   }
 
   if (!room || !room.name) {

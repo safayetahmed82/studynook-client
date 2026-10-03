@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useTitle from "../hooks/useTitle";
 import RoomCard from "../components/RoomCard";
+import Spinner from "../components/Spinner";
 
 const amenityOptions = [
   "Whiteboard",
@@ -120,7 +121,7 @@ const Rooms = () => {
 
         <div className="lg:col-span-3">
           {loading ? (
-            <p className="py-16 text-center text-gray-600">Loading rooms...</p>
+            <Spinner />
           ) : rooms.length === 0 ? (
             <div className="py-16 text-center">
               <p className="text-xl font-bold text-ink">No rooms found</p>

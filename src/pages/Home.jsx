@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
 import RoomCard from "../components/RoomCard";
+import Spinner from "../components/Spinner";
 
 const Home = () => {
   useTitle("StudyNook – Home");
@@ -41,7 +42,7 @@ const Home = () => {
         <p className="mt-2 text-gray-600">Our latest rooms, ready to book.</p>
 
         {loading ? (
-          <p className="py-12 text-center text-gray-600">Loading rooms...</p>
+          <Spinner />
         ) : (
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rooms.map((room) => (

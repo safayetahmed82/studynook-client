@@ -1,12 +1,13 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Spinner from "../components/Spinner";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
 
   if (loading) {
-    return <p className="py-24 text-center text-gray-600">Loading...</p>;
+    return <Spinner />;
   }
 
   if (!user) {

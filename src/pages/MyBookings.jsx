@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import useTitle from "../hooks/useTitle";
 import ConfirmModal from "../components/ConfirmModal";
+import Spinner from "../components/Spinner";
 
 const label = (hour) => (hour < 10 ? "0" + hour : hour) + ":00";
 
@@ -54,7 +55,7 @@ const MyBookings = () => {
   };
 
   if (loading) {
-    return <p className="py-24 text-center text-gray-600">Loading your bookings...</p>;
+    return <Spinner />;
   }
 
   return (

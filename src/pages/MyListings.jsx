@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
+import Spinner from "../components/Spinner";
 
 const MyListings = () => {
   useTitle("StudyNook – My Listings");
@@ -20,7 +21,7 @@ const MyListings = () => {
   }, []);
 
   if (loading) {
-    return <p className="py-24 text-center text-gray-600">Loading your rooms...</p>;
+    return <Spinner />;
   }
 
   return (
