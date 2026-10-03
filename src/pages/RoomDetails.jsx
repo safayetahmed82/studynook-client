@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 import useTitle from "../hooks/useTitle";
+import { useAuth } from "../context/AuthContext";
+import ConfirmModal from "../components/ConfirmModal";
+import EditRoomModal from "../components/EditRoomModal";
 
 const RoomDetails = () => {
   useTitle("StudyNook – Room Details");
 
   const { id } = useParams();
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
   const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/rooms/${id}`)
@@ -18,6 +27,30 @@ const RoomDetails = () => {
       });
   }, [id]);
 
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/rooms/${id}`,
+        {
+          method: "DELETE",
+          credentials: "include",
+        },
+      );
+      const data = await res.json();
+
+      if (res.ok) {
+        toast.success("Room deleted successfully");
+        navigate("/my-listings");
+      } else {
+        toast.error(data.message);
+        setShowDelete(false);
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      setShowDelete(false);
+    }
+  };
+
   if (loading) {
     return <p className="py-24 text-center text-gray-600">Loading room...</p>;
   }
@@ -26,8 +59,10 @@ const RoomDetails = () => {
     return <p className="py-24 text-center text-gray-600">Room not found.</p>;
   }
 
+  const isOwner = user && room.owner === user._id;
+
   return (
-    <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2 ">
+    <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 lg:grid-cols-2">
       <img
         src={room.image}
         alt={room.name}
@@ -59,10 +94,59 @@ const RoomDetails = () => {
           ))}
         </div>
 
-        <button className="mt-8 rounded-lg bg-brand px-8 py-3 font-semibold text-white hover:bg-brand-light">
-          Book Now
-        </button>
+        <div className="mt-8 flex flex-wrap gap-3">
+          {user ? (
+            <button className="rounded-lg bg-brand px-8 py-3 font-semibold text-white hover:bg-brand-light">
+              Book Now
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              state={{ from: { pathname: `/rooms/${id}` } }}
+              className="rounded-lg bg-brand px-8 py-3 font-semibold text-white hover:bg-brand-light"
+            >
+              Login to Book
+            </Link>
+          )}
+
+          {isOwner && (
+            <>
+              <button
+                onClick={() => setShowEdit(true)}
+                className="rounded-lg border border-brand px-6 py-3 font-semibold text-brand hover:bg-cyan-50"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => setShowDelete(true)}
+                className="rounded-lg border border-red-600 px-6 py-3 font-semibold text-red-600 hover:bg-red-50"
+              >
+                Delete
+              </button>
+            </>
+          )}
+        </div>
       </div>
+
+      {showDelete && (
+        <ConfirmModal
+          title="Delete this room?"
+          message="This will permanently remove the room. This cannot be undone."
+          confirmText="Yes, delete"
+          onConfirm={handleDelete}
+          onCancel={() => setShowDelete(false)}
+        />
+      )}
+      {showEdit && (
+        <EditRoomModal
+          room={room}
+          onClose={() => setShowEdit(false)}
+          onUpdated={(updated) => {
+            setRoom(updated);
+            setShowEdit(false);
+          }}
+        />
+      )}
     </div>
   );
 };
