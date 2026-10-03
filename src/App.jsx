@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import AddRoom from "./pages/AddRoom";
 import MyListings from "./pages/MyListings";
+import MyBookings from "./pages/MyBookings";
 
 export default function App() {
   return (
@@ -45,7 +46,7 @@ export default function App() {
             path="/my-bookings"
             element={
               <PrivateRoute>
-                <p className="p-8">My Bookings page coming soon</p>
+                <MyBookings />
               </PrivateRoute>
             }
           />
