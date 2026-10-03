@@ -5,6 +5,7 @@ import useTitle from "../hooks/useTitle";
 import { useAuth } from "../context/AuthContext";
 import ConfirmModal from "../components/ConfirmModal";
 import EditRoomModal from "../components/EditRoomModal";
+import BookingModal from "../components/BookingModal";
 
 const RoomDetails = () => {
   useTitle("StudyNook – Room Details");
@@ -17,6 +18,7 @@ const RoomDetails = () => {
   const [loading, setLoading] = useState(true);
   const [showDelete, setShowDelete] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [showBooking, setShowBooking] = useState(false);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/rooms/${id}`)
@@ -96,7 +98,10 @@ const RoomDetails = () => {
 
         <div className="mt-8 flex flex-wrap gap-3">
           {user ? (
-            <button className="rounded-lg bg-brand px-8 py-3 font-semibold text-white hover:bg-brand-light">
+            <button
+              onClick={() => setShowBooking(true)}
+              className="rounded-lg bg-brand px-8 py-3 font-semibold text-white hover:bg-brand-light"
+            >
               Book Now
             </button>
           ) : (
@@ -144,6 +149,16 @@ const RoomDetails = () => {
           onUpdated={(updated) => {
             setRoom(updated);
             setShowEdit(false);
+          }}
+        />
+      )}
+      {showBooking && (
+        <BookingModal
+          room={room}
+          onClose={() => setShowBooking(false)}
+          onBooked={() => {
+            setRoom({ ...room, bookingCount: room.bookingCount + 1 });
+            setShowBooking(false);
           }}
         />
       )}
