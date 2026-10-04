@@ -28,8 +28,9 @@ const Navbar = () => {
   };
 
   return (
-    <header className="border-b border-ink/10 bg-gray-100">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+    <header className="border-b-[3px] border-brand bg-white shadow-sm ">
+      <div className="mx-auto w-12/14 ">
+        <nav className="items-center flex h-16 justify-between px-4">
         <ul className="hidden items-center gap-6 lg:flex">
           <li>
             <NavLink to="/" end className={linkClass}>
@@ -65,7 +66,7 @@ const Navbar = () => {
         <Link
           to="/"
           onClick={closeMenu}
-          className="text-2xl font-bold text-brand transition-colors hover:text-brand-light"
+          className="text-4xl font-bold text-brand transition-colors hover:text-brand-light"
         >
           Study<span className="text-brand-light">Nook</span>
         </Link>
@@ -124,6 +125,7 @@ const Navbar = () => {
           ></span>
         </button>
       </nav>
+      </div>
 
       {open && (
         <div className="border-t border-ink/10 px-4 pb-4 pt-2 lg:hidden">
