@@ -1,6 +1,6 @@
 {StudyNook} – Library Study Room Booking
 
-{Live site:} https://your-live-site-url.vercel.app
+{Live site:} https://studynook-client-orpin.vercel.app
 
 StudyNook is a full-stack web application where students and library users can list study rooms they control, and any registered user can browse, search, filter and book those rooms for a specific date and time slot. The platform prevents double-booking automatically, lets owners manage their own listings, and gives every user a dashboard for their bookings.
 
@@ -27,34 +27,30 @@ StudyNook is a full-stack web application where students and library users can l
 
 {Pages}
 
-[Route	Access	Description]
+[Route Access Description]
 
-/	Public	Hero banner, latest 6 rooms, how it works, why choose StudyNook
-/rooms	Public	All rooms with sidebar search, facilities filter and rate sorting
-/rooms/:id	Public	Room details, booking, and owner-only edit and delete
-/login, /register	Public	Email and password or Google sign-in
-/add-room	Private	Create a new room listing
-/my-listings	Private	Rooms you have listed
-/my-bookings	Private	Your bookings, with cancel option
-
+/ Public Hero banner, latest 6 rooms, how it works, why choose StudyNook
+/rooms Public All rooms with sidebar search, facilities filter and rate sorting
+/rooms/:id Public Room details, booking, and owner-only edit and delete
+/login, /register Public Email and password or Google sign-in
+/add-room Private Create a new room listing
+/my-listings Private Rooms you have listed
+/my-bookings Private Your bookings, with cancel option
 
 {Run Locally}
-
 
 --Clone the repository and install the packages:
 
 //bash//
 
-git clone https://github.com/YOUR_USERNAME/studynook-client.git
+git clone https://github.com/safayetahmed82/studynook-client.git
 cd studynook-client
 npm install
-
 
 --Create a .env file in the project root:
 
 VITE_API_URL=http://localhost:5000
 VITE_GOOGLE_CLIENT_ID=your_google_client_id
-
 
 --Start the app:
 
@@ -64,5 +60,5 @@ npm run dev
 The app opens at http://localhost:5173. It needs the StudyNook server running as well.
 
 Repositories
-Client: https://github.com/YOUR_USERNAME/studynook-client
-Server: https://github.com/YOUR_USERNAME/studynook-server
+Client: https://github.com/safayetahmed82/studynook-client
+Server: https://github.com/safayetahmed82/studynook-server
