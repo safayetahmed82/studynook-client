@@ -59,7 +59,7 @@ const BookingModal = ({ room, onClose, onBooked }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-      <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-lg">
+      <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-6 shadow-lg">
         <h2 className="text-2xl font-bold text-ink">Book {room.name}</h2>
         <p className="mt-1 text-sm text-gray-600">
           ${room.hourlyRate} per hour

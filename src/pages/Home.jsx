@@ -20,9 +20,9 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-12/14 mx-auto ">
-      <section className=" bg-cyan-50 px-4 py-20 text-center ">
-        <h1 className="text-4xl font-bold text-ink sm:text-5xl">
+    <div className="">
+      <section className="bg-cyan-50 px-4 py-14 text-center sm:py-20">
+        <h1 className="text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
           Find Your Perfect Study Room
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-gray-600">
@@ -37,7 +37,7 @@ const Home = () => {
         </Link>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16">
+      <section className="mx-auto max-w-7xl px-4 py-16 w-12/14 mx-auto ">
         <h2 className="text-3xl font-bold text-ink">Available Study Rooms</h2>
         <p className="mt-2 text-gray-600">Our latest rooms, ready to book.</p>
 
@@ -51,7 +51,7 @@ const Home = () => {
           </div>
         )}
       </section>
-      <section className="bg-gray-100 px-4 py-16">
+      <section className="bg-gray-100 px-4 py-16 w-12/14 mx-auto ">
         <div className="mx-auto max-w-7xl">
           <h2 className="text-center text-3xl font-bold text-ink">
             How It Works
@@ -98,7 +98,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16">
+      <section className="mx-auto max-w-7xl px-4 py-16 w-12/14 mx-auto ">
         <h2 className="text-center text-3xl font-bold text-ink">
           Why Choose StudyNook
         </h2>

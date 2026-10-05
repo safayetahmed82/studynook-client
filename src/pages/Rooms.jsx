@@ -59,7 +59,7 @@ const Rooms = () => {
     "w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-brand focus:outline-none";
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12">
+    <div className="mx-auto w-13/14 px-4 py-12">
       <h1 className="text-3xl font-bold text-ink">Available Rooms</h1>
       <p className="mt-2 text-gray-600">
         Pick a room and book it for the time you need.
@@ -97,7 +97,7 @@ const Rooms = () => {
 
           <div>
             <p className="mb-2 text-sm font-medium">Facilities</p>
-            <div className="space-y-2">
+            <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
               {amenityOptions.map((item) => (
                 <label key={item} className="flex items-center gap-2 text-sm">
                   <input

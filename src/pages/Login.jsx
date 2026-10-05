@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import useTitle from "../hooks/useTitle";
 import { useAuth } from "../context/AuthContext";
+import GoogleButton from "../components/GoogleButton";
 
 const Login = () => {
   useTitle("StudyNook – Login");
@@ -31,7 +32,7 @@ const Login = () => {
       const data = await res.json();
 
       if (res.ok) {
-        toast.success("Login successful!");
+        
         toast.success("Login successful!");
         setUser(data.user);
         navigate(from, { replace: true });
@@ -80,6 +81,13 @@ const Login = () => {
             Login
           </button>
         </form>
+        <div className="my-5 flex items-center gap-3">
+          <div className="h-px flex-1 bg-gray-300"></div>
+          <span className="text-sm text-gray-500">or</span>
+          <div className="h-px flex-1 bg-gray-300"></div>
+        </div>
+
+        <GoogleButton redirectTo={from} />
 
         <p className="mt-6 text-center text-sm text-gray-600">
           Don't have an account?{" "}
